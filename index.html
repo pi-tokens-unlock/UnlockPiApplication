@@ -349,22 +349,26 @@
             }, 3000);
         }
 
-        // নতুন রেটিং ফাংশন
+        // টগল রেটিং ফাংশন
         function giveRating() {
             const starIcon = document.getElementById('star-icon');
             
-            // স্টার ভরাট করা
-            starIcon.classList.remove('fa-regular');
-            starIcon.classList.add('fa-solid');
+            // যদি আগে থেকে ভরাট থাকে, তবে খালি করো। আর খালি থাকলে ভরাট করো।
+            if (starIcon.classList.contains('fa-solid')) {
+                starIcon.classList.remove('fa-solid');
+                starIcon.classList.add('fa-regular');
+                showToast("Rating removed!");
+            } else {
+                starIcon.classList.remove('fa-regular');
+                starIcon.classList.add('fa-solid');
+                showToast("Thanks for your rating!");
+            }
             
             // এনিমেশন ইফেক্ট
             starIcon.style.transform = "scale(1.3)";
             setTimeout(() => {
                 starIcon.style.transform = "scale(1)";
             }, 200);
-
-            // ইউজারকে ধন্যবাদ জানানো
-            showToast("Thanks for your rating! ⭐");
         }
     </script>
 
